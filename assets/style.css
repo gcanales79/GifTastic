@@ -6,3 +6,8 @@
     float:left;
     margin: 10px;
 }
+
+.favoriteLink{
+    cursor:pointer;
+    color: rgb(72, 72, 240);
+}
