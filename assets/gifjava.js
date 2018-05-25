@@ -103,23 +103,26 @@ $(document).on("click", ".sportGif", function () {
     }
 });
 
+//clear local storage
+
 //Add to favorites
 $(document).on("click", ".favoriteLink", function () {
     link = $(this).attr("src");
     favoritesArray.push(link);
     console.log(favoritesArray);
+    localStorage.setItem("myFavgifs", JSON.stringify(favoritesArray));
 
 })
 
 //Show favorites Gifs
 function favoriteGifs() {
-    console.log("Funcion");
-    for (var i = 0; i < favoritesArray.length; i++) {
-        console.log("Entro");
+    var storedFavarrays = JSON.parse(localStorage.getItem("myFavgifs"));
+    console.log(storedFavarrays);
+    for (var i = 0; i < storedFavarrays.length; i++) {
         var displayDiv = $("<div>");
         displayDiv.addClass("sportImages");
         var image = $("<img>");
-        image.attr("src", favoritesArray[i]);
+        image.attr("src", storedFavarrays[i]);
         displayDiv.append(image);
         $("#showSports").prepend(displayDiv);
     }
