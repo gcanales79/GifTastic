@@ -1,5 +1,15 @@
 var gifArrays = ["NBA", "MLB", "Lebron", "Ronaldo", "Playoffs", "Messi", "Dodgers", "Yankees", "Home Run", "Michael Jordan", "Curry", "Goal"]
-var favoritesArray = [];
+var favoritesArray = []
+//favoritesArray=JSON.parse(localStorage.getItem("myFavgifs"))
+console.log(favoritesArray);
+
+if (localStorage.getItem("myFavgifs")===null){
+    console.log("My fav Gifs doesn't exist");
+}
+else{
+    console.log("My fav gifs exist");
+    favoritesArray=JSON.parse(localStorage.getItem("myFavgifs"));
+}
 
 //function to create the pre define buttons
 for (var i = 0; i < gifArrays.length; i++) {
@@ -107,7 +117,7 @@ $(document).on("click", ".sportGif", function () {
 
 //Add to favorites
 $(document).on("click", ".favoriteLink", function () {
-    favoriteArray=JSON.parse(localStorage.getItem("myFavgifs"));
+    //favoriteArray=JSON.parse(localStorage.getItem("myFavgifs"));
     link = $(this).attr("src");
     favoritesArray.push(link);
     console.log(favoritesArray);
