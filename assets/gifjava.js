@@ -24,7 +24,7 @@ for (var i = 0; i < gifArrays.length; i++) {
 }
 
 var gifkey = "bH1wVfBgLzvBZlR6FKJ73r78cLMoDdTL";
-limitOfgifs = 3;
+limitOfgifs = 10;
 
 
 //Function to display the gifs on the showSports div
@@ -117,7 +117,6 @@ $(document).on("click", ".sportGif", function () {
 
 //Add to favorites
 $(document).on("click", ".favoriteLink", function () {
-    //favoriteArray=JSON.parse(localStorage.getItem("myFavgifs"));
     link = $(this).attr("src");
     favoritesArray.push(link);
     console.log(favoritesArray);
@@ -141,12 +140,23 @@ function favoriteGifs() {
 // To see the favorite Gifs
 $(document).on("click", "#favpage", function (event) {
     event.preventDefault();
+    if(localStorage.getItem("myFavgifs")===null){
+        alert("You don't have any Gifs stored as favorites");
+    }
+    else{
     $("#showSports").empty();
     favoriteGifs();
+    }
 })
 
 //To look for more gifs
 $(document).on("click", "#clearDiv", function (event) {
     event.preventDefault();
     $("#showSports").empty();
+})
+
+//Clear favorite Gifs
+$(document).on("click","#clearFav",function (event){
+    event.preventDefault();
+    localStorage.clear();
 })
