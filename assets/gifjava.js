@@ -131,6 +131,8 @@ function favoriteGifs() {
     for (var i = 0; i < storedFavarrays.length; i++) {
         var displayDiv = $("<div>");
         displayDiv.addClass("sportImages");
+        displayDiv.attr("href",storedFavarrays[i]);
+        displayDiv.attr("download",true);
         var image = $("<img>");
         image.attr("src", storedFavarrays[i]);
         displayDiv.append(image);
@@ -159,4 +161,5 @@ $(document).on("click", "#clearDiv", function (event) {
 $(document).on("click","#clearFav",function (event){
     event.preventDefault();
     localStorage.clear();
+    favoritesArray = [];
 })
