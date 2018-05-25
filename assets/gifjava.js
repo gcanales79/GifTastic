@@ -107,6 +107,7 @@ $(document).on("click", ".sportGif", function () {
 
 //Add to favorites
 $(document).on("click", ".favoriteLink", function () {
+    favoriteArray=JSON.parse(localStorage.getItem("myFavgifs"));
     link = $(this).attr("src");
     favoritesArray.push(link);
     console.log(favoritesArray);
